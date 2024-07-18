@@ -20,6 +20,8 @@ public:
         if(root->left) leftDis = helper(root->left,distance,count); 
         if(root->right) rightDis = helper(root->right,distance,count);
 
+
+        // compareing left+right distance of each node
         for(auto ld:leftDis){
             for(auto rd:rightDis){
                 if(ld+rd <= distance) count++;
@@ -27,7 +29,7 @@ public:
         }
 
         vector<int> combinedDis;
-
+        // sedinf the combined distance
         for(auto ld:leftDis)  combinedDis.push_back(ld+1);
         for(auto rd:rightDis)  combinedDis.push_back(rd+1);
 
