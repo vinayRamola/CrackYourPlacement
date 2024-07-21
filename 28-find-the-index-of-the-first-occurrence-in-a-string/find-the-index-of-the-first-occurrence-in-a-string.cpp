@@ -5,7 +5,9 @@ public:
         int m = haystack.length();
         if(haystack==needle) return 0;
 
-        for(int i=0;i<=m-n;i++){
+        if(m<n) return -1;
+
+        for(int i=0;i<=haystack.length()-n;i++){
             string subst = haystack.substr(i,n);
             if(subst==needle) return i;
         }
