@@ -7,7 +7,7 @@ public:
 
         if(m<n) return -1;
 
-        for(int i=0;i<=haystack.length()-n;i++){
+        for(int i=0;i<=m-n;i++){
             string subst = haystack.substr(i,n);
             if(subst==needle) return i;
         }
