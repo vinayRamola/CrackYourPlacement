@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool static comp(pair<int,int> p1,pair<int,int> p2){
+    static bool comp(pair<int,int> p1,pair<int,int> p2){
         if(p1.second<p2.second) return true;
         else if(p1.second==p2.second) return p1.first>p2.first;
         else return false;
