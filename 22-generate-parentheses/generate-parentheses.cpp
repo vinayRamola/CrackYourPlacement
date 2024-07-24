@@ -6,11 +6,15 @@ public:
             return;
         }
         if (open < n) {
-            solve(n, open + 1, close, v, temp + '(');
+            temp.push_back('(');
+            solve(n, open + 1, close, v, temp);
+            temp.pop_back();
         }
         
         if (close < open) {
-            solve(n, open, close + 1, v, temp + ')');
+            temp.push_back(')');
+            solve(n, open, close + 1, v, temp);
+            temp.pop_back();
         }
 
     }
