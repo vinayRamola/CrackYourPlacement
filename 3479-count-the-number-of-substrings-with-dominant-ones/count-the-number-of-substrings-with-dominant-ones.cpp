@@ -4,7 +4,7 @@ public:
         int n = s.length();
         int ans = 0;
 
-        vector<int> prefix(n, 0);
+        vector<int> prefix(n , 0);
 
         for (int i = 0; i < n; i++) {
             if (s[i] == '1') {
