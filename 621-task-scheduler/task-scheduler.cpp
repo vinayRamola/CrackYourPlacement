@@ -1,20 +1,43 @@
 class Solution {
- public:
-  int leastInterval(vector<char>& tasks, int n) {
-    if (n == 0)
-      return tasks.size();
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        unordered_map<char,int> mp;
 
-    vector<int> count(26);
+        int count=tasks.size();
+        
+        for(auto &ch:tasks){
+            mp[ch]++;
+        }
 
-    for (const char task : tasks)
-      ++count[task - 'A'];
+        int unique = mp.size();
+        priority_queue<int> pq;
 
-    const int maxFreq = ranges::max(count);
+        for(auto &count:mp){
+            pq.push(count.second);
+        }
 
-    const int maxFreqTaskOccupy = (maxFreq - 1) * (n + 1);
-   
-    const int nMaxFreq = ranges::count(count, maxFreq);
-    
-    return max(maxFreqTaskOccupy + nMaxFreq, static_cast<int>(tasks.size()));
-  }
+        int intervals = 0;
+
+        while(!pq.empty()){
+            int cycle = n+1;
+            vector<int> temp;
+
+            for(int i=0;i<cycle;i++){
+                if(!pq.empty()){
+                    temp.push_back(pq.top());
+                    pq.pop();
+                }
+            }
+
+            for(auto &ele:temp){
+                if(--ele > 0){
+                    pq.push(ele);
+                }
+            }
+
+            intervals += !pq.empty() ? cycle:temp.size();
+        }
+     
+        return intervals;
+    }
 };
